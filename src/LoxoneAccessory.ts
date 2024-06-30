@@ -67,12 +67,14 @@ export class LoxoneAccessory {
         .setCharacteristic(this.platform.Characteristic.SerialNumber, this.device.uuidAction)
         .setCharacteristic(this.platform.Characteristic.Name, this.device.name);
     }
-    const adaptiveLightning = accesory.getControllers()
-    if (!this.adaptiveLightingController) {
+    accessory.prototype.getControllers = function() {
+        if (!this.adaptiveLightingController) {
             return [];
         } else {
             return [this.adaptiveLightingController];
-    }
+        }
+    };
+
     return accessory;
   }
 
